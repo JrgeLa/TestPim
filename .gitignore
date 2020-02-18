@@ -6,7 +6,7 @@ web/dist/*
 web/cache/*
 app/archive/*
 var/cache/*
-app/config/parameters.yml
+#app/config/parameters.yml
 var/logs/*
 app/import/*
 app/export/*
