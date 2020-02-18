@@ -1,0 +1,86 @@
+{
+    "name": "akeneo/pim-enterprise-standard",
+    "description": "The \"Akeneo Enterprise Standard Edition\" distribution",
+    "license": "Proprietary",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Akeneo",
+            "homepage": "http://www.akeneo.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src/",
+            "Context": "features/",
+            "PimEnterprise\\Behat": "features/",
+            "Pim\\Behat": "vendor/akeneo/pim-community-dev/features/"
+        },
+        "psr-4": {
+            "Akeneo\\TestEnterprise\\Integration\\": "tests/",
+            "Pim\\Upgrade\\": "upgrades/",
+            "Akeneo\\Test\\Integration\\": "vendor/akeneo/pim-community-dev/tests/"
+        },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ],
+        "exclude-from-classmap": [
+            "vendor/akeneo/pim-community-dev/app/AppKernel.php",
+            "vendor/akeneo/pim-community-dev/app/AppCache.php",
+            "vendor/akeneo/pim-enterprise-dev/app/AppKernel.php",
+            "vendor/akeneo/pim-enterprise-dev/app/AppCache.php"
+        ]
+    },
+    "require": {
+        "akeneo/pim-enterprise-dev": "~3.2.33",
+        "akeneo/pim-community-dev": "~3.2.33"
+    },
+    "require-dev": {
+        "doctrine/migrations": "1.5.0",
+        "doctrine/doctrine-migrations-bundle": "1.2.1"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "ssh://git@distribution.akeneo.com:443/pim-enterprise-dev-fashionette-gmbh.git",
+            "no-api": true
+        }
+    ],
+    "scripts": {
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "php bin/console fos:js-routing:dump --target=web/js/routes.js"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts",
+            "Akeneo\\Platform\\Bundle\\InstallerBundle\\EnterpriseComposerScripts::copyUpgradesFiles"
+        ]
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml",
+            "keep-outdated": true,
+            "env-map": {
+                "database_host": "PIM_DATABASE_HOST",
+                "database_port": "PIM_DATABASE_PORT",
+                "database_name": "PIM_DATABASE_NAME",
+                "database_user": "PIM_DATABASE_USER",
+                "database_password": "PIM_DATABASE_PASSWORD",
+                "index_hosts": "PIM_INDEX_HOSTS"
+            }
+        }
+    }
+}

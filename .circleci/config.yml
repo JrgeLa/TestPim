@@ -1,0 +1,67 @@
+version: 2
+jobs:
+    build:
+        machine:
+            enabled: true
+        steps:
+            - checkout
+            - run:
+                    name: Setup environment variables
+                    command: |
+                        echo 'export AKENEO_PIM_URL="http://localhost/"' >> $BASH_ENV
+                        echo 'export DOCKER_PORT_HTTP=8080' >> $BASH_ENV
+            -   run:
+                    name: Copy SSH folder
+                    command: rsync -avh ~/.ssh/ ssh && sudo chown -R 1000:1000 ssh
+
+            -   run:
+                    name: Add CircleCI override
+                    command: cp .circleci/docker-compose.override.yml.dist docker-compose.override.yml
+
+            -   add_ssh_keys:
+                    fingerprints:
+                        - "05:ef:d8:fd:5f:ee:d9:bf:bf:cc:6d:af:d8:d8:9e:3b"
+
+            -   run:
+                    name: Setup environment
+                    command: ./bin/docker/pim-setup.sh
+
+            -   run:
+                    name: Change owner on project dir (default user = circleci (1001) and docker needs uid 1000)
+                    command: sudo chown -R 1000:1000 ../project
+
+            -   run:
+                    name: Start containers
+                    command: docker-compose up -d
+
+            -   run:
+                    name: Install dependencies
+                    command: ./bin/docker/pim-dependencies.sh
+
+            -   run:
+                    name: Pim installation
+                    command: |
+                        docker-compose exec fpm bin/console --env=prod pim:install --force --clean \
+                        && docker-compose run --rm node yarn run less \
+                        && docker-compose run --rm node yarn run webpack
+            -   run:
+                    name: Test login page HTTP status
+                    command: curl -I http://localhost:${DOCKER_PORT_HTTP}/ | head -n1 | grep 302
+
+workflows:
+    version: 2
+
+    pull_request:
+        jobs:
+            - build
+
+    nightly:
+        triggers:
+            -   schedule:
+                    cron: 0 5,13 * * *
+                    filters:
+                        branches:
+                            only:
+                                - "3.2" 
+        jobs:
+            - build
