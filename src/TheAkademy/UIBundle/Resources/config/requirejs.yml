@@ -1,0 +1,4 @@
+config:
+  paths:
+    theakademyui/username: theakademyui/js/username
+    theakademyui/template/username: theakademyui/templates/username.html
