@@ -28,7 +28,9 @@ class AppKernel extends Kernel
     protected function registerProjectBundles()
     {
         return [
-            // your app bundles should be registered here
+            new \TheAkademy\InstallerBundle\TheAkademyInstallerBundle(),
+            new \TheAkademy\ProductManipulationBundle\TheAkademyProductManipulationBundle(),
+            # new \TheAkademy\UIBundle\TheAkademyUIBundle()
         ];
     }
 
