@@ -1,6 +1,6 @@
 extensions:
   theakademyui_username_form_extension:
     module: theakademyui/username      # your requireJS module name
-    parent: pim-product-edit-form-data # Parent module where to add your custom stuff
+    parent: pim-product-edit-form-meta # Parent module where to add your custom stuff
     targetZone: meta
     position: 300
