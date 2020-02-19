@@ -5,7 +5,7 @@ services:
     image: 'akeneo/fpm:php-7.2'
     user: 'docker'
     volumes:
-      - './:/srv/pim'
+      - './:/srv/pim:delegated'
       - './.ssh:/home/docker/.ssh'
     working_dir: '/srv/pim'
     networks:
@@ -17,7 +17,7 @@ services:
     image: 'node:10-slim'
     user: 'node'
     volumes:
-      - './:/srv/pim'
+      - './:/srv/pim:delegated'
     working_dir: '/srv/pim'
     networks:
       - 'akeneo'

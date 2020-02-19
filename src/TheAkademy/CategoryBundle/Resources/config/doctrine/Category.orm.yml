@@ -1,0 +1,12 @@
+# /src/TheAkademy/CategoryBundle/Resources/config/doctrine/Category.orm.yml
+TheAkademy\CategoryBundle\Entity\Category:
+  type: entity
+  table: pim_catalog_category
+  changeTrackingPolicy: DEFERRED_EXPLICIT
+  gedmo:
+    tree:
+      type: nested
+  fields:
+    description:
+      type: text
+      nullable: true

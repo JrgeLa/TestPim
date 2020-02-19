@@ -58,3 +58,9 @@ akeneo_pim_structure:
 parameters:
     pim_ce_dev_src_folder_location: '%kernel.project_dir%/vendor/akeneo/pim-community-dev'
     pim_ee_dev_src_folder_location: '%kernel.project_dir%/vendor/akeneo/pim-enterprise-dev'
+
+akeneo_storage_utils:
+    mapping_overrides:
+        -
+            original: Akeneo\Pim\Enrichment\Component\Category\Model\Category
+            override: TheAkademy\CategoryBundle\Entity\Category
