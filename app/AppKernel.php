@@ -31,7 +31,7 @@ class AppKernel extends Kernel
             new \TheAkademy\InstallerBundle\TheAkademyInstallerBundle(),
             new \TheAkademy\ProductManipulationBundle\TheAkademyProductManipulationBundle(),
             # new \TheAkademy\UIBundle\TheAkademyUIBundle(),
-            new TheAkademy\CategoryBundle\TheAkademyCategoryBundle()
+            //new TheAkademy\CategoryBundle\TheAkademyCategoryBundle()
         ];
     }
 
