@@ -1,0 +1,7 @@
+services:
+  product_event:
+    class: 'TheAkademy\EventBundle\EventListener\ProductEventListener'
+    arguments:
+      - '@pim_catalog.updater.product'
+    tags:
+      - { name: kernel.event_listener, event: akeneo.storage.pre_save, method: updateDescription, priority: 255}
