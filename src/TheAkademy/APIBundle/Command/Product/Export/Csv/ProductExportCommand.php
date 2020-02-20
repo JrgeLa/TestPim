@@ -67,8 +67,12 @@ class ProductExportCommand extends Command
     {
         $clientBuilder = new AkeneoPimEnterpriseClientBuilder('http://httpd:80');
 
-        return $clientBuilder->buildAuthenticatedByPassword('1_4v7kwbrrrxmo4sk0kw040gggokkg8kgocg0o0kg08oc0cks80o', '55jz4mi07400088gg008kkgg84044k848k80c88ssg0owoko0w', 'admin', 'admin');
-    }
+        return $clientBuilder->buildAuthenticatedByPassword(
+            '1_4sroh3920so4g0woc8wkw8kos0cook8so8gsk4oo840wkwoo08',
+            '4z411u1pqa8s8gcwwkcggogoogs8go0s80cso40ss08sgko8co',
+            'admin',
+            'admin'
+        );    }
 
     protected function configure()
     {
