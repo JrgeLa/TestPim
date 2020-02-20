@@ -30,8 +30,9 @@ class AppKernel extends Kernel
         return [
             new \TheAkademy\InstallerBundle\TheAkademyInstallerBundle(),
             new \TheAkademy\ProductManipulationBundle\TheAkademyProductManipulationBundle(),
-            # new \TheAkademy\UIBundle\TheAkademyUIBundle(),
-            //new TheAkademy\CategoryBundle\TheAkademyCategoryBundle()
+            // new \TheAkademy\UIBundle\TheAkademyUIBundle(),
+            // new TheAkademy\CategoryBundle\TheAkademyCategoryBundle(),
+            new TheAkademy\APIBundle\TheAkademyAPIBundle()
         ];
     }
 
