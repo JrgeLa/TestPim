@@ -1,0 +1,20 @@
+rules:
+  my_custom_rule:
+    priority: 0
+    conditions:
+      -
+        field: family
+        operator: IN
+        value:
+          - camcorders
+    actions:
+      -
+        type: pattern
+        field: description
+        attributes:
+          - name
+          - description
+        pattern: 'My %%description%% and %%name%%'
+        options:
+          scope: ecommerce
+          locale: en_US

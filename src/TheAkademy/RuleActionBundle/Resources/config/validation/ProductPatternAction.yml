@@ -1,0 +1,23 @@
+TheAkademy\RuleActionBundle\Model\ProductPatternAction:
+  constraints:
+    - Akeneo\Pim\Automation\RuleEngine\Bundle\Validator\Constraint\PropertyAction: ~
+  properties:
+    field:
+      - Type:
+          type: string
+      - NotBlank: ~
+      - Length:
+          max: 255
+      - Akeneo\Pim\Automation\RuleEngine\Bundle\Validator\Constraint\ExistingSetField: ~
+    attributes:
+      - Type:
+          type: array
+      - NotBlank:
+          message: The key "attributes" is missing or empty.
+      - TheAkademy\RuleActionBundle\Validator\Constraints\ExistingAttributes: ~
+    pattern:
+      - Type:
+          type: string
+      - NotBlank: ~
+      - Length:
+          max: 255

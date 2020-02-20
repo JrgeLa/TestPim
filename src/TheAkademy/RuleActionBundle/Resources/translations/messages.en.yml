@@ -1,0 +1,4 @@
+pimee_catalog_rule:
+  actions:
+    type:
+      "pattern": Then attributes (%attributes%) from pattern are replaced by specific values into %field%
