@@ -1,14 +1,16 @@
 <?php
 
-
 namespace TheAkademy\CategoryBundle\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Akeneo\Pim\Enrichment\Bundle\Form\Type\CategoryType as AkeneoCategoryType;
 
-use Akeneo\Pim\Enrichment\Bundle\Form\Type\CategoryType as BaseCategoryType;
-
-class CategoryType extends BaseCategoryType
+/**
+ * @author Olivier Soulet <olivier.soulet@akeneo.com>
+ * @copyright 2019 Akeneo SAS (http://www.akeneo.com)
+ */
+final class CategoryType extends AkeneoCategoryType
 {
     /**
      * {@inheritdoc}
@@ -17,10 +19,8 @@ class CategoryType extends BaseCategoryType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('description', TextType::class,
-            [
-                # 'required' => true
-            ]
-        );
+        $builder->add('description', TextareaType::class, [
+            'required' => false,
+        ]);
     }
 }

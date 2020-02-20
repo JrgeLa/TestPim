@@ -1,11 +1,14 @@
 <?php
 
-
 namespace TheAkademy\CategoryBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class TheAkademyCategoryBundle extends Bundle
+/**
+ * @author    Olivier Soulet <olivier.soulet@akeneo.com>
+ * @copyright 2019 Akeneo SAS (http://www.akeneo.com)
+ */
+final class TheAkademyCategoryBundle extends Bundle
 {
-
 }

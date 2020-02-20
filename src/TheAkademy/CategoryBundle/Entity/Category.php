@@ -2,11 +2,15 @@
 
 namespace TheAkademy\CategoryBundle\Entity;
 
-use Akeneo\Pim\Enrichment\Component\Category\Model\Category as BaseCategory;
+use Akeneo\Pim\Enrichment\Component\Category\Model\Category as AkeneoCategory;
 
-class Category extends BaseCategory
+/**
+ * @author Olivier Soulet <olivier.soulet@akeneo.com>
+ */
+class Category extends AkeneoCategory
 {
-    protected $description;
+    /** @var string */
+    private $description;
 
     public function getDescription()
     {
@@ -16,7 +20,5 @@ class Category extends BaseCategory
     public function setDescription($description)
     {
         $this->description = $description;
-
-        return $this;
     }
 }

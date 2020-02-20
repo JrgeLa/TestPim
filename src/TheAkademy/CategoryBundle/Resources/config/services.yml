@@ -1,47 +1,47 @@
-# /src/TheAkademy/CategoryBundle/Resources/config/services.yml
 parameters:
-  pim_enrich.view_element.category.tab.property.template: 'CategoryBundle:CategoryTree:Tab/property.html.twig'
-  pim_catalog.entity.category.class: TheAkademy\CategoryBundle\Entity\Category
+    pim_enrich.view_element.category.tab.property.template: TheAkademyCategoryBundle:CategoryTree:Tab/property.html.twig
+    pim_catalog.entity.category.class:  TheAkademy\CategoryBundle\Entity\Category
 
 services:
-  pim_enrich.form.type.category:
-    class: 'TheAkademy\CategoryBundle\Form\Type\CategoryType'
-    arguments:
-      - '%pim_catalog.entity.category.class%'
-      - '%pim_catalog.entity.category_translation.class%'
-    tags:
-      - { name: form.type, alias: pim_category }
-    calls:
-      - [addEventSubscriber, ['@pimee_security.form.subscriber.category_permissions']]
+    pim_enrich.form.type.category:
+        class: 'TheAkademy\CategoryBundle\Form\Type\CategoryType'
+        arguments:
+            - '%pim_catalog.entity.category.class%'
+            - '%pim_catalog.entity.category_translation.class%'
+        tags:
+            - { name: form.type, alias: pim_category }
+        calls:
+            - [addEventSubscriber, ['@pimee_security.form.subscriber.category_permissions']]
 
-  pimee_enrich.controller.category_tree.product:
-    class: 'Akeneo\Pim\Permission\Bundle\Controller\Ui\CategoryTreeController'
-    arguments:
-      - '@event_dispatcher'
-      - '@pim_user.context.user'
-      - '@pim_catalog.saver.category'
-      - '@pim_catalog.remover.category'
-      - '@pim_catalog.factory.category'
-      - '@pim_catalog.repository.category'
-      - '@oro_security.security_facade'
-      - { related_entity: published_product, form_type: 'TheAkademy\CategoryBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
-      - '@pimee_security.repository.category_access'
-      - '@security.token_storage'
-    calls:
-      - [ setContainer, [ '@service_container' ] ]
+    pim_enrich.controller.category_tree.product:
+        class: 'Akeneo\Pim\Permission\Bundle\Controller\Ui\CategoryTreeController'
+        arguments:
+            - '@event_dispatcher'
+            - '@pim_user.context.user'
+            - '@pim_catalog.saver.category'
+            - '@pim_catalog.remover.category'
+            - '@pim_catalog.factory.category'
+            - '@pim_catalog.repository.category'
+            - '@oro_security.security_facade'
+            - { related_entity: product, form_type: 'TheAkademy\CategoryBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
+            - '@pimee_security.repository.category_access'
+            - '@security.token_storage'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
 
-  pimee_workflow.controller.category_tree.published_product:
-    class: 'Akeneo\Pim\Permission\Bundle\Controller\Ui\CategoryTreeController'
-    arguments:
-      - '@event_dispatcher'
-      - '@pim_user.context.user'
-      - '@pim_catalog.saver.category'
-      - '@pim_catalog.remover.category'
-      - '@pim_catalog.factory.category'
-      - '@pim_catalog.repository.category'
-      - '@oro_security.security_facade'
-      - { related_entity: published_product, form_type: 'TheAkademy\CategoryBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
-      - '@pimee_security.repository.category_access'
-      - '@security.token_storage'
-    calls:
-      - [ setContainer, [ '@service_container' ] ]
+    pimee_workflow.controller.category_tree.published_product:
+        class: 'Akeneo\Pim\Permission\Bundle\Controller\Ui\CategoryTreeController'
+        arguments:
+            - '@event_dispatcher'
+            - '@pim_user.context.user'
+            - '@pim_catalog.saver.category'
+            - '@pim_catalog.remover.category'
+            - '@pim_catalog.factory.category'
+            - '@pim_catalog.repository.category'
+            - '@oro_security.security_facade'
+            - { related_entity: published_product, form_type: 'TheAkademy\CategoryBundle\Form\Type\CategoryType', acl: pim_enrich_product, route: pim_enrich }
+            - '@pimee_security.repository.category_access'
+            - '@security.token_storage'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
+
