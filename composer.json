@@ -31,7 +31,13 @@
     },
     "require": {
         "akeneo/pim-enterprise-dev": "~3.2.33",
-        "akeneo/pim-community-dev": "~3.2.33"
+        "akeneo/pim-community-dev": "~3.2.33",
+        "akeneo/api-php-client-ee": "*",
+        "php-http/guzzle6-adapter": "*",
+        "guzzlehttp/psr7": "*",
+        "mailgun/mailgun-php": "*",
+        "kriswallsmith/buzz": "*",
+        "nyholm/psr7": "*"
     },
     "require-dev": {
         "doctrine/migrations": "1.5.0",
