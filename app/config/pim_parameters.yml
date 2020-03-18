@@ -30,7 +30,7 @@ parameters:
     # installer_data: %kernel.root_dir%/../vendor/akeneo/catalogs/master/enterprise/small/fixtures
     # or you can use one of the provided catalogs
     # use PimEnterpriseInstallerBundle:minimal
-    installer_data:       PimEnterpriseInstallerBundle:minimal
+    installer_data:       TheAkademyInstallerBundle:main
 
     uservoice_key:                 ~
     max_products_category_removal: 100

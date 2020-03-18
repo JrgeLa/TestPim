@@ -29,6 +29,7 @@ class AppKernel extends Kernel
     {
         return [
             // your app bundles should be registered here
+            new \TheAkademy\InstallerBundle\TheAkademyInstallerBundle(),
         ];
     }
 
